@@ -6,14 +6,20 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 
+
+root = os.path.dirname(os.path.abspath(__file__))
+
 # ['employer', 'surname', 'given_name', 'position', 'salary_paid', 'taxable_benefits', 'year']
-UWSalaries_File = r"C:/Users/RossM/Desktop/Data/UWATERLOO/Salaries/Salaries.xlsx"
+UWSalaries_File = root + "/Salaries.xlsx"
 
 # ['YEAR', 'CPI']
-Inflation_CPI_File = r"C:/Users/RossM/Desktop/Data/CANADA/INFLATION_CPI/Inflation_CPI.xls"
+Inflation_CPI_File = root + "/Inflation_CPI.xls"
 
 out_headers = ['employer', 'surname', 'given_name', 'position', 'salary_paid', 'taxable_benefits', 'year', 'CPI', 'salary_change']
-output = r"C:/Users/RossM/Desktop/Side/WATInflation/Output/data.xls"
+output = root + "/Output/data.xls"
+
+iconpath= root + "\Icon\Iconsmind-Outline-Coins.ico"
+
 
 class Application:
     def __init__(self, master):
@@ -21,7 +27,7 @@ class Application:
         master.geometry("500x300")
         master.configure(background='black')
         master.bind('<Return>', self.Lookup)
-        master.iconbitmap(default="C:\Users\RossM\Desktop\Side\WATInflation\Icon\Iconsmind-Outline-Coins.ico")
+        master.iconbitmap(default=iconpath)
         self.search = StringVar()
         self.entry = Entry(master, textvariable=self.search, width=60).pack(pady=20)
         self.scrollbar = Scrollbar(master)
